@@ -3,7 +3,7 @@ angular.module('Falcon-email').factory('previewRenderSrvc', function ($http) {
 	var html = ''
 	
 	return {
-		render: function (data) {
+		preview: function (data) {
 			return $http({
 				url: window.location,
 				method: 'POST',
@@ -15,6 +15,22 @@ angular.module('Falcon-email').factory('previewRenderSrvc', function ($http) {
 			.then(function (response) {
 				return { html: response.data };
         	});
+		},
+
+		inline: function(data) {
+			debugger;
+			return $http({
+				url: '/inline',
+				method: 'POST',
+				data: {
+					html: data.html,
+					data: data.values
+				},
+				headers: {'Content-Type': 'application/json'},
+			})
+			.then(function (response) {
+				return { html: response.data }
+			})
 		}
 	}	
 });
