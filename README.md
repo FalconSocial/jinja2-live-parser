@@ -8,7 +8,6 @@ A lightweight live parser for [Jinja2](http://jinja.pocoo.org/docs/dev/) based o
 
     $ git clone git@github.com:falconsocial/jinja2-live-parser.git
     $ pip install -r requirements.txt
-    $ python parser.py config.yaml
 
 Note: if you have issues with installing the requirements related to `premailer`, please run the following command (or equivalent, depending on your system):
 
@@ -23,6 +22,7 @@ Also, you'll need to have browsersync installed. Instructions on how to install 
 
 ## Usage
 
+* Run the server: `python parser.py config.yaml`
 * Clone the `notifications-templates` repository on your local file system
 * In your `bs-config.js`, change the `files` key to point to your notifications-templates repository location
 * Run `browser-sync` as follows:
