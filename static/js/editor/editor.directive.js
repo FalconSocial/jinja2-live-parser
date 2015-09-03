@@ -3,7 +3,9 @@ angular.module('Falcon-email')
 		return {
 			scope: {
 				onUpdate: '&',
-				onReset: '&'
+				onReset: '&',
+				inlinePreview: '&',
+				currentHtml: '='
 			},
 			templateUrl: '/static/js/editor/editor.directive.html',
 			controllerAs: 'vm',
@@ -28,6 +30,18 @@ angular.module('Falcon-email')
 					editor.session
 					scope.onReset({
 						'$value': {}
+					});
+				}
+				scope.inlineEmail = function () {
+					debugger;
+					var values = element.find('.ace_content').text();
+					var html = scope.currentHtml;
+
+					scope.inlinePreview({
+						'$value': {
+							values: values,
+							html: html,
+						}
 					});
 				}
 

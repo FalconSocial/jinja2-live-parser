@@ -4,9 +4,16 @@ angular.module('Falcon-email', [])
 		$scope.html = {}
 
 		$scope.updateRender = function (value) {
-			previewRenderSrvc.render(value).then(function (data) {
+			previewRenderSrvc.preview(value).then(function (data) {
  				$scope.render = data.html;
  			});
+		}
+
+		$scope.inlineEmail = function (value) {
+			previewRenderSrvc.inline(value)
+				.then(function (data) {
+					$scope.render = data.html
+				})
 		}
 		
 		//Initialize the template with no data.
