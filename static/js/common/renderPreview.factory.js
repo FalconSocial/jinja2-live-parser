@@ -18,7 +18,6 @@ angular.module('Falcon-email').factory('previewRenderSrvc', function ($http) {
 		},
 
 		inline: function(data) {
-			debugger;
 			return $http({
 				url: '/inline',
 				method: 'POST',
