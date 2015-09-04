@@ -1,6 +1,4 @@
 angular.module('Falcon-email').factory('previewRenderSrvc', function ($http) {
-
-	var html = ''
 	
 	return {
 		preview: function (data) {

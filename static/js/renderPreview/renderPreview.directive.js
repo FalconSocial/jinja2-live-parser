@@ -6,8 +6,13 @@ angular.module('Falcon-email')
 		 	},
 		 	templateUrl: '/static/js/renderPreview/renderPreview.directive.html',
 		 	link: function (scope, element) {
+
+		 		var $frame = element.find('iframe')[0];
+
 		 		scope.$watch('html', function( val ) {
-		 				element.html(val);
+		 			if(val) {
+		 				$frame.contentDocument.write(val);
+		 			}
 		 		});
 		 	}
 		 }		
