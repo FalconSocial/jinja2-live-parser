@@ -33,7 +33,6 @@ angular.module('Falcon-email')
 					});
 				}
 				scope.inlineEmail = function () {
-					debugger;
 					var values = element.find('.ace_content').text();
 					var html = scope.currentHtml;
 
