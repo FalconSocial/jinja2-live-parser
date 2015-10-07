@@ -39,7 +39,7 @@ def render_post(channel, prefix, name):
 @app.route('/inline', methods=['POST'])
 def inline_css():
     values = request.get_json()
-    return premailer.transform(values.get('html'))
+    return premailer.transform(values.get('html'), base_url=app.config.get('base_url', None))
 
 
 @app.route('/inline/<channel>/<prefix>/<name>', methods=['POST'])
@@ -47,7 +47,7 @@ def inline_css_from_file(channel, prefix, name):
     template = _load_template(channel, prefix, name)
     values = request.get_json()
     rendered_tpl = template.render(values.get('data'))
-    return premailer.transform(rendered_tpl)
+    return premailer.transform(rendered_tpl, base_url=app.config.get('base_url', None))
 
 if __name__ == "__main__":
     config = Objector.from_argv()
