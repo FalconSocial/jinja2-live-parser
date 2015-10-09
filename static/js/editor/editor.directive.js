@@ -20,21 +20,20 @@ angular.module('Falcon-email')
 				scope.updatePreview = function() {
 					// Parse the value of the element to an obj,
 					// that then we pass to the update function.
-					var value = JSON.parse(element.find('.ace_content').text());
+					var value = JSON.parse(editor.session.getValue());
 					scope.onUpdate({
 						'$value': value
 					})
 				}
 				scope.clearEditor = function() {
-					element.find('.ace_content').html('');
-					editor.session
+					editor.session.setValue('');
+					//element.find('.ace_content').html('');
 					scope.onReset({
 						'$value': {}
 					});
 				}
 				scope.inlineEmail = function () {
-					debugger;
-					var values = element.find('.ace_content').text();
+					var values = JSON.parse(editor.session.getValue());
 					var html = scope.currentHtml;
 
 					scope.inlinePreview({

@@ -6,8 +6,20 @@ angular.module('Falcon-email')
 		 	},
 		 	templateUrl: '/static/js/renderPreview/renderPreview.directive.html',
 		 	link: function (scope, element) {
+
+		 		var $frame = element.find('iframe')[0];
+
 		 		scope.$watch('html', function( val ) {
-		 				element.html(val);
+		 			//Hack to override previews document data.
+		 			//Should be refactored.
+		 			
+		 			$frame.contentWindow.document.open();
+		 			$frame.contentWindow.document.write('');
+		 			$frame.contentWindow.document.close();
+
+		 			if(val) {
+		 				$frame.contentDocument.write(val);
+		 			}
 		 		});
 		 	}
 		 }		
